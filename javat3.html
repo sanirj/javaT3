@@ -1,0 +1,107 @@
+<html>
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Qwitcher+Grypen:wght@400;700&display=swap" rel="stylesheet">
+        <style>
+            .hero-section{
+                height: 97vh;
+                background-image: url(image/c81324dae98d170ab506b2d0f409a536.jpg);
+                background-size: cover; 
+                display: flex; 
+                justify-content: center; 
+                align-items: center;
+                position: relative;
+            }
+            .hero-section .image {
+                position: absolute;
+                top: 280px;
+                left: 420px;
+                width: 103px;
+                height: auto;
+                animation-name: rotate;
+                animation-duration: 4s;
+                animation-iteration-count: infinite;
+                animation-direction: alternate;
+            }
+            @keyframes rotate {
+                0% {
+                    transform: rotate(0deg);
+                }
+
+                50% {
+                    transform: rotate(-15deg);
+                }
+                100% {
+                    transform: rotate(15deg);
+                }
+               
+            }
+
+            .hero-section  p {
+                position: absolute;
+                transform: translate(-120%,-150%) ;
+                font-size: 80px;
+                font-weight: bolder;
+                font-family: "Qwitcher Grypen", cursive;
+            }
+            .hero-section .parent .input{
+               width: 205px;
+               height: 35px;
+               border-radius: 6px;
+               border-color: aqua;
+               border-style: ridge;
+               border-width: 4px;
+               box-shadow: 1px 5px 8px 1px #000;
+            }
+            .hero-section .parent .button{
+                margin-left: 10px;
+                box-shadow: 1px 5px 5px 0 #000;
+                border-color:rgb(216, 112, 211);
+                border-radius: 4px;
+                border-width: 3px;
+                border-style: ridge;
+                height:30px;
+            }
+            .list li .deleteItem {
+                color:rgb(190, 14, 14);
+                display:inline-block;
+                margin-left: 4px;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="hero-section">
+            <img class="image" src="image/c67951296c366657932da41ce2027235.jpg"/>
+            <p>To do List</p>
+            <div class="parent">   
+                <input class="input" placeholder="please type here"/>
+                <button class="button" onclick="add()">add</button>
+                <ul class="list"></ul>
+            </div>    
+        </div>    
+
+     <script>
+        function add(){
+            var list= document.querySelector(".list");
+            var input= document.querySelector(".input");
+            if(input.value.trim().length>=3){
+                var li=document.createElement("LI");
+                var deleteElement=document.createElement("SPAN");
+                li.innerHTML=input.value;
+                li.appendChild(deleteElement);
+                deleteElement.innerHTML="x";
+                deleteElement.classList.add("deleteItem");
+                li.classList.add("item");
+                list.appendChild(li);
+                input.value="";
+            }else{
+                alert("please enter 3 charector at least");
+                input.value="";
+            }
+        }
+        document.querySelector(".input").focus();
+    </script>
+    </body>
+</html>    
